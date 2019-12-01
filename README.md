@@ -19,4 +19,4 @@ Translator.init(
 TranslationInflaterFactory.setup(this)
 ```
 See sample for reference
-![](https://j.gifs.com/gZD6R6.gif)
+![](https://j.gifs.com/gZD6R6.gif =250x)
