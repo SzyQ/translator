@@ -6,17 +6,35 @@ Setup Firebase https://firebase.google.com/docs/android/setup and run the sample
 # Setup
 - Initialise Translator in your Application onCreate
 ```kotlin
-Translator.init(
+override fun onCreate() {
+        super.onCreate()
+        FirebaseApp.initializeApp(this)
+        Translator.init(
             app = this,
             defaultAppLocale = Locale.ENGLISH,
-            supportedLocales = listOf(Locale("pl")), //Locales which you support apart from your default one
-            factory = null,// Parser factories for your custom views
-            clazz = R.string::class.java //Add this if you want to prefetch all strings in the app
+            supportedLocales = listOf(Locale("pl")),
+            factory = object : ParserFactory {
+                override fun get(view: View): ViewTranslationParser? {
+                    return null
+                }
+            },
+            clazz = R.string::class.java
         )
+        ...
+    }
 ```
-- Add This single line before super.onCreate in your Activity
+- Add this to your activity
 ```kotlin
-TranslationInflaterFactory.setup(this)
+override fun attachBaseContext(newBase: Context) {
+    super.attachBaseContext(TranslatedContext.wrap(newBase))
+}
+
+
+override fun onCreate(savedInstanceState: Bundle?) {
+    TranslationInflaterFactory.setup(this)
+    super.onCreate(savedInstanceState)
+    ...
+}
 ```
 See sample for reference
 

@@ -3,10 +3,12 @@ package mobi.klimaszewski.translator
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
 import androidx.databinding.DataBindingUtil
+import mobi.klimaszewski.translation.TranslatedContext
 import mobi.klimaszewski.translation.TranslationInflaterFactory
 import mobi.klimaszewski.translation.Translator
 import mobi.klimaszewski.translator.databinding.ActivityMainBinding
@@ -31,6 +33,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(TranslatedContext.wrap(newBase))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         TranslationInflaterFactory.setup(this)
@@ -58,26 +63,26 @@ class MainActivity : AppCompatActivity() {
                     binding.state.text = getString(R.string.state_init)
                 }
                 Translator.State.TranslationNotRequired -> {
-                    binding.state.text = Translator.translate(getString(R.string.state_not_required))
+                    binding.state.text = getString(R.string.state_not_required)
                     animator.end()
                 }
                 Translator.State.LocaleNotSupported -> {
-                    binding.state.text = Translator.translate(getString(R.string.state_not_supported))
+                    binding.state.text = getString(R.string.state_not_supported)
                     animator.end()
                 }
                 Translator.State.TranslationModelDownloading -> {
-                    binding.state.text = Translator.translate(getString(R.string.state_downloading))
+                    binding.state.text = getString(R.string.state_downloading)
                     animator.start()
                 }
                 Translator.State.TranslationModelDownloaded -> {
                     toggle.isClickable = true
                     toggle.alpha = 1f
-                    binding.state.text = Translator.translate(getString(R.string.state_downloaded))
+                    binding.state.text = getString(R.string.state_downloaded)
                     animator.end()
                 }
                 is Translator.State.TranslationModelDownloadError -> {
                     animator.end()
-                    binding.state.text = Translator.translate(getString(R.string.state_error))
+                    binding.state.text = getString(R.string.state_error)
                 }
             }
         }
