@@ -1,0 +1,14 @@
+<resources>
+    <string name="state_init">Uruchamianie tłumacza</string>
+    <string name="state_not_required">Tłumaczenie jest niepotrzebne</string>
+    <string name="state_not_supported">Tłumaczenie jest niedostępne</string>
+    <string name="state_downloading">Pobieranie modelu tłumaczenia</string>
+    <string name="state_downloaded">Pobrano model tłumaczenia - aplikacja jest gotowa</string>
+    <string name="state_error">Nie udało się pobrać modelu tłumaczenia</string>
+    <string name="welcome">Witaj w automatycznym tłumaczu aplikacji, wspieranej przez Google ML Kit</string>
+    <string name="turn_on">Włącz tłumaczenie</string>
+    <string name="try_out">Sprawdźmy jak to działa</string>
+    <string name="hint">To jest podpowiedź</string>
+    <string name="button">Guzik</string>
+    <string name="checkbox">Zaznacz mnie</string>
+</resources>

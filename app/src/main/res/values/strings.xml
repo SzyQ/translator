@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name" translatable="false">AppTranslatorDemo</string>
+    <string name="state_init">Initialising Translator</string>
+    <string name="state_not_required">Translation is not required</string>
+    <string name="state_not_supported">This locale is not supported</string>
+    <string name="state_downloading">Downloading translation model</string>
+    <string name="state_downloaded">Translation model is downloaded - app is ready to translate</string>
+    <string name="state_error">Couldn\'t download translation model!</string>
+    <string name="welcome">Welcome to automatically translated app, thanks to Google ML Kit!</string>
+    <string name="turn_on">Turn on translation</string>
+    <string name="try_out">Let\'s see how it works</string>
+    <string name="hint">This is hint</string>
+    <string name="button">Button</string>
+    <string name="checkbox">Checkbox</string>
+</resources>
